@@ -172,7 +172,7 @@ func (vm *VM) run(ctx context.Context) error {
 }
 
 func (vm *VM) IP(ctx context.Context) (string, error) {
-	stdout, _, err := tart.Tart(ctx, vm.logger, "ip", "--wait", "60", vm.id())
+	stdout, _, err := tart.Tart(ctx, vm.logger, "ip", "--resolver", "arp", "--wait", "60", vm.id())
 	if err != nil {
 		return "", err
 	}
