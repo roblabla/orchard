@@ -247,6 +247,15 @@ func (vm *VM) IP(ctx context.Context) (string, error) {
 	return strings.TrimSpace(stdout), nil
 }
 
+func (vm *VM) IPNow(ctx context.Context) (string, error) {
+	stdout, _, err := tart.Tart(ctx, vm.logger, "ip", "--resolver", "arp", vm.id())
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimSpace(stdout), nil
+}
+
 func (vm *VM) Stop() {
 	vm.logger.Debugf("stopping VM")
 
